@@ -1,0 +1,29 @@
+services:
+#  nginx_proxymanager:
+#    image: 'jc21/nginx-proxy-manager:latest'
+#    restart: unless-stopped
+#    ports:
+#      # These ports are in format <host-port>:<container-port>
+#      - '80:80' # Public HTTP Port
+#      - '443:443' # Public HTTPS Port
+#      - '81:81' # Admin Web Port
+#      # Add any other Stream port you want to expose
+#      # - '21:21' # FTP
+#    
+#    # to use in host network
+#    network_mode: "host"
+#    # above config remove container network isolation so you can access to host directly.
+#    # In nginx proxy manager you can use 127.0.0.1 to access local expose ports because of 
+#    # nginx proxy manager now run in host network not inside container.
+#    
+#    volumes:
+#      - ./data:/data
+#      - ./letsencrypt:/etc/letsencrypt
+#
+#
+  nifi:
+    image: apache/nifi:latest
+    ports:
+      - 0.0.0.0:8080:8080/tcp
+    volumes:
+      - ./conf:/opt/nifi/nifi-current/conf/
